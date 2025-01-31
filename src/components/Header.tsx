@@ -64,6 +64,17 @@ const Header = () => {
               </Link>
             ))}
             
+            {/* Resume Download Button */}
+            <a
+              href="/Saira-Tasmin-Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2 bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white rounded-lg transform hover:scale-105 transition-all duration-200"
+            >
+              <i className="fas fa-download mr-2"></i>
+              Resume
+            </a>
+
             {/* Dark Mode Toggle */}
             <button
               onClick={toggleDarkMode}
@@ -117,6 +128,18 @@ const Header = () => {
                   {item.name}
                 </Link>
               ))}
+              
+              {/* Resume Download Button (Mobile) */}
+              <a
+                href="/Saira-Tasmin-Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block px-4 py-2 text-base font-medium text-primary-500 hover:bg-secondary-50 dark:hover:bg-dark-600"
+                onClick={() => setIsOpen(false)}
+              >
+                <i className="fas fa-download mr-2"></i>
+                Resume
+              </a>
             </div>
           </div>
         )}

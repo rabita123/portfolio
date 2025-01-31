@@ -5,6 +5,7 @@ import About from './components/About'
 import Projects from './components/Projects'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import CTA from './components/CTA'
 
 function App() {
   useEffect(() => {
@@ -27,6 +28,7 @@ function App() {
         <Hero />
         <About />
         <Projects />
+        <CTA />
         <Contact />
       </main>
       <Footer />

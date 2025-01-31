@@ -1,10 +1,12 @@
 import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
 
 const projects = [
   {
     title: 'Recipe Sharing Platform',
     description: 'A modern recipe sharing platform where users can discover, share, and save their favorite recipes. Features include recipe creation, search functionality, user authentication, and responsive design.',
     image: '/recipe-site.jpg',
+    blurImage: '/recipe-site-blur.jpg',
     tags: ['React', 'Next.js', 'Tailwind CSS', 'MongoDB', 'Authentication'],
     liveUrl: 'https://recipe-sharing-site.vercel.app/',
     githubUrl: 'https://github.com/rabita123/recipe-sharing',
@@ -14,6 +16,7 @@ const projects = [
     title: 'Food Delivery Platform',
     description: 'A modern food delivery platform with an intuitive interface for ordering food online. Features include restaurant listings, menu browsing, cart management, and responsive design.',
     image: '/food-delivery.jpg',
+    blurImage: '/food-delivery-blur.jpg',
     tags: ['React', 'Next.js', 'Tailwind CSS', 'UI/UX Design'],
     liveUrl: 'https://food-delivery-site-pied.vercel.app/',
     githubUrl: 'https://github.com/rabita123/food-delivery-site',
@@ -41,6 +44,7 @@ const projects = [
     title: 'Personal Blog Site',
     description: 'A modern blog platform built with React and hosted on Netlify. Features a clean and minimalist design for optimal reading experience, responsive layout, and easy content management.',
     image: '/blog.png',
+    blurImage: '/blog-blur.png',
     tags: ['React', 'Blog', 'Netlify', 'Responsive Design'],
     liveUrl: 'https://679ba23b137c5d86d66bd77d--inspiring-cupcake-c34f92.netlify.app/',
     githubUrl: '#',
@@ -50,12 +54,38 @@ const projects = [
     title: 'Medical Service Facility',
     description: 'A comprehensive healthcare platform that connects patients with medical services. Features a modern interface for browsing medical services, appointment scheduling, and healthcare information.',
     image: '/medical.png',
+    blurImage: '/medical-blur.png',
     tags: ['React', 'Healthcare', 'Netlify', 'Responsive Design'],
     liveUrl: 'https://medical-service-facility0907027.netlify.app/',
     githubUrl: '#',
     icon: '🏥',
   },
 ];
+
+const ProjectImage = ({ src, alt, icon }: { src: string; alt: string; icon: string }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [error, setError] = useState(false);
+
+  return (
+    <div className="relative h-48 bg-gradient-to-br from-primary-100 to-secondary-100 dark:from-primary-900/30 dark:to-secondary-900/30">
+      <div className="absolute inset-0 flex items-center justify-center text-6xl">
+        {icon}
+      </div>
+      {!error && (
+        <img
+          src={src}
+          alt={alt}
+          loading="lazy"
+          className={`w-full h-full object-cover transition-opacity duration-300 ${
+            isLoaded ? 'opacity-90 hover:opacity-100' : 'opacity-0'
+          }`}
+          onLoad={() => setIsLoaded(true)}
+          onError={() => setError(true)}
+        />
+      )}
+    </div>
+  );
+};
 
 const Projects = () => {
   const containerVariants = {
@@ -103,16 +133,11 @@ const Projects = () => {
                 whileHover={{ y: -5 }}
                 className="bg-white dark:bg-dark-600 rounded-xl overflow-hidden shadow-soft hover:shadow-soft-lg transition-all duration-300"
               >
-                <div className="relative h-48 bg-gradient-to-br from-primary-100 to-secondary-100 dark:from-primary-900/30 dark:to-secondary-900/30">
-                  <div className="absolute inset-0 flex items-center justify-center text-6xl">
-                    {project.icon}
-                  </div>
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity duration-300"
-                  />
-                </div>
+                <ProjectImage
+                  src={project.image}
+                  alt={project.title}
+                  icon={project.icon}
+                />
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-3 text-secondary-800 dark:text-secondary-200">
                     {project.title}

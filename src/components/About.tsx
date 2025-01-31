@@ -45,8 +45,7 @@ const About = () => {
               About Me
             </h2>
             <p className="text-xl text-secondary-600 dark:text-secondary-300 max-w-3xl mx-auto">
-              I'm a passionate web developer with experience in building modern web applications.
-              I love creating elegant solutions and learning new technologies.
+            I’m a passionate MERN Stack Developer specializing in React.js, Next.js, and Node.js. I build scalable web applications and have experience in Supabase, Firebase, and API integration. Open to remote roles in Germany, the USA, and worldwide!.
             </p>
           </motion.div>
 
