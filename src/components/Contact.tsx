@@ -4,7 +4,7 @@ import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   useEffect(() => {
-    emailjs.init('F-jSdd1TnpsZcLUXN');
+    emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
   }, []);
 
   const [formData, setFormData] = useState({
@@ -23,14 +23,14 @@ const Contact = () => {
 
     try {
       await emailjs.send(
-        'service_5lvsio9',
-        'template_d2r1yun',
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         {
           from_name: formData.name,
           from_email: formData.email,
           message: formData.message,
         },
-        'F-jSdd1TnpsZcLUXN'
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       );
       
       setSubmitStatus('success');
